@@ -1,5 +1,5 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
+import InnerBoolDex from "./components/InnerBoolDex.vue";
 
 export default {
   data() {
@@ -8,19 +8,23 @@ export default {
     };
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  components: {
+    InnerBoolDex,
+  },
 };
 </script>
 
 <template>
   <div class="container">
-    <div class="pokedex"></div>
+    <div class="booldex">
+      <InnerBoolDex />
+    </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
+@use "./assets/variables.scss" as *;
+
 .container {
   display: flex;
   justify-content: center;
@@ -28,8 +32,9 @@ export default {
 
   padding: 50px;
 
-  .pokedex {
-    border: 10px solid #8b0001;
+  .booldex {
+    border: 10px solid $bd-primary;
+
     border-radius: 40px;
 
     min-height: 80vh;
