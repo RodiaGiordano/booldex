@@ -1,23 +1,32 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
-
 export default {
   data() {
     return {};
   },
 
   // components: {
-  //   MyComponent,
+  //   ImgPoke,
   // },
 };
 </script>
 
 <template>
-  <input type="text" />
-  <div class="show debug">
-    <div class="pok-img debug"></div>
-    <div class="pok-descript debug"></div>
+  <div class="show">
+    <div class="description debug">ciao</div>
   </div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+@use "../assets/variables.scss" as *;
+.show {
+  height: 100%;
+  padding: 60px;
+
+  .description {
+    height: 100%;
+    border: 5px solid $bd-primary;
+    background-color: $bg-secondary;
+    padding: 10px;
+  }
+}
+</style>

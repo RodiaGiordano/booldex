@@ -37,12 +37,14 @@ export default {
   justify-content: center;
   align-items: center;
 
+  min-width: 1200px;
   padding: 50px;
 
   .booldex {
+    background-color: $bg-primary;
     border: 10px solid $bd-primary;
     border-radius: 40px;
-    height: 800px;
+    height: 750px;
     width: 1100px;
     display: grid;
     grid-template-columns: 50% auto;
