@@ -1,15 +1,16 @@
 <script>
-import InnerBoolDex from "./components/InnerBoolDex.vue";
+// import InnerBoolDex from "./components/InnerBoolDex.vue";
+import LeftPoke from "./components/LeftPoke.vue";
+import RightPoke from "./components/RightPoke.vue";
 
 export default {
   data() {
-    return {
-      title: "Hello world",
-    };
+    return {};
   },
 
   components: {
-    InnerBoolDex,
+    LeftPoke,
+    RightPoke,
   },
 };
 </script>
@@ -17,13 +18,19 @@ export default {
 <template>
   <div class="container">
     <div class="booldex">
-      <InnerBoolDex />
+      <div class="left">
+        <LeftPoke />
+      </div>
+      <div class="right">
+        <RightPoke />
+      </div>
     </div>
   </div>
 </template>
 
 <style lang="scss" scoped>
 @use "./assets/variables.scss" as *;
+@use "./assets/mixin.scss";
 
 .container {
   display: flex;
@@ -34,11 +41,18 @@ export default {
 
   .booldex {
     border: 10px solid $bd-primary;
-
     border-radius: 40px;
+    height: 800px;
+    width: 1100px;
+    display: grid;
+    grid-template-columns: 50% auto;
 
-    min-height: 80vh;
-    min-width: 80vw;
+    .left {
+      @include mixin.border(true, $bd-primary);
+    }
+    .right {
+      @include mixin.border(false, $bd-primary);
+    }
   }
 }
 </style>

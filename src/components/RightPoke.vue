@@ -3,9 +3,7 @@
 
 export default {
   data() {
-    return {
-      title: "Hello world",
-    };
+    return {};
   },
 
   // components: {
@@ -22,10 +20,4 @@ export default {
   </div>
 </template>
 
-<style lang="scss" scoped>
-// @use "../assets/variables.scss";
-// @use "../assets/mixin.scss";
-// .debug {
-//   border: 1px dashed green;
-// }
-</style>
+<style lang="scss" scoped></style>
