@@ -3,17 +3,29 @@
 
 export default {
   data() {
-    return {};
+    return {
+      // pokImg: null,
+    };
   },
 
   // components: {
   //   MyComponent,
   // },
+
+  props: ["sprites"],
+
+  computed: {
+    screenImg() {
+      if (typeof this.sprites === "string") return this.sprites;
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="wrapper"></div>
+  <div class="wrapper">
+    <img :src="screenImg" alt="" />
+  </div>
 </template>
 
 <style lang="scss" scoped>
@@ -23,5 +35,10 @@ export default {
   border: 5px solid black;
   border-radius: 5px;
   height: 100%;
+  text-align: center;
+
+  img {
+    height: 100%;
+  }
 }
 </style>
