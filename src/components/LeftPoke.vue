@@ -29,15 +29,13 @@ export default {
       axios
         .get(`${this.base_url}${this.uri}`)
         .then(({ data: { name, types, height, weight, stats, sprites } }) => {
-          this.pokeStats = { name, types, height, weight, stats };
+          this.pokeStats = { name, height, weight, types, stats };
 
           this.sprite = [sprites.front_default, sprites.back_default];
-          console.log(this.pokeStats);
         })
         .catch(() => {
           this.sprite = [this.defaultSprite];
           this.uri = "";
-          this.pokeStats = "Nessun pokemon trovato";
         });
     },
   },

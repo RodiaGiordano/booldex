@@ -41,10 +41,12 @@ export default {
     background-color: $bg-primary;
     border: 10px solid $bd-primary;
     border-radius: 40px;
-    height: 850px;
+    height: 800px;
     width: 1100px;
-    display: grid;
-    grid-template-columns: 50% auto;
+    display: flex;
+    > * {
+      flex: 1;
+    }
   }
 }
 </style>
