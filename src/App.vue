@@ -5,7 +5,7 @@ import RightPoke from "./components/RightPoke.vue";
 export default {
   data() {
     return {
-      data: null,
+      captured: [],
     };
   },
 
@@ -15,8 +15,18 @@ export default {
   },
 
   methods: {
-    saveToggled($data) {
-      console.log($data);
+    saveToggled(data) {
+      const caught = this.captured.indexOf(data);
+
+      if (this.captured[caught] != data) {
+        this.captured.push(data);
+        console.log(this.captured);
+        console.log("sono diversi");
+      } else {
+        console.log("sono uguali");
+      }
+
+      // this.captured.push(data.charAt(0).toUpperCase() + data.slice(1));
     },
   },
 };
@@ -27,7 +37,7 @@ export default {
     <div class="booldex">
       <LeftPoke @saveToggled="saveToggled" />
 
-      <RightPoke />
+      <RightPoke :captured="captured" />
     </div>
   </div>
 </template>

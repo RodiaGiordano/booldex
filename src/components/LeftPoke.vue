@@ -34,7 +34,6 @@ export default {
         .get(`${this.base_url}${this.uri}`)
         .then(({ data: { name, types, height, weight, stats, sprites } }) => {
           this.pokeStats = { name, height, weight, types, stats };
-          console.log(this.pokeStats);
 
           this.sprite = [sprites.front_default, sprites.back_default];
         })

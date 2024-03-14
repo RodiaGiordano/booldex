@@ -1,12 +1,22 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      capturedList: [],
+    };
   },
 
-  // components: {
-  //   ImgPoke,
-  // },
+  props: { captured: [Array, "capturedList"] },
+
+  watch: {
+    captured: {
+      handler(newVal) {
+        this.capturedList = newVal;
+        console.log("array in right");
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 
