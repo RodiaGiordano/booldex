@@ -77,17 +77,23 @@ export default {
   gap: 15px;
   line-height: 1.6;
 
-  .stat {
-    .bar {
-      display: inline-block;
-      border: 1px solid black;
-      border-radius: 5px;
-      width: 50%;
-      height: 10px;
+  .attributes {
+    li {
+      display: flex;
+      align-items: center;
+      .bar {
+        display: inline-block;
+        border: 1px solid black;
+        border-radius: 5px;
+        width: 200px;
+        height: 10px;
+        margin-left: auto;
 
-      .charge-bar {
-        height: 100%;
-        background-color: black;
+        .charge-bar {
+          height: 100%;
+          background-color: black;
+          border-radius: 5px;
+        }
       }
     }
   }
