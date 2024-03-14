@@ -21,34 +21,47 @@ export default {
     stats: [Object, null],
   },
 
-  // watch: {
-  //   stats(newVal) {
-  //     console.log(newVal);
-  //     this.details = { newVal: { name, types, height, weight } };
-  //     console.log(this.details);
-  //   },
-  // },
+  watch: {
+    stats: {
+      handler(newVal) {
+        if (newVal.name != undefined || newVal.name != null) {
+          const { name, types, height, weight, stats } = newVal;
+          this.details = { name, height, weight };
+          this.details.types = types[0].type.name;
+          this.details.height += " ''";
+          this.details.weight += " lbs.";
+          this.attributes = [...stats];
+          return;
+        }
+        this.details.name = null;
+        this.attributes = null;
+      },
+      deep: true,
+    },
+  },
 };
 </script>
 
 <template>
-  <div class="details">
-    <ul>
-      <li><strong>ciao:</strong> come stai</li>
-      <li><strong>ciao:</strong> come stai</li>
-      <li><strong>ciao:</strong> come stai</li>
-      <li><strong>ciao:</strong> come stai</li>
-    </ul>
+  <div v-if="details.name" class="stats">
+    <div class="details">
+      <ul>
+        <li v-for="(val, key) in details" :key="key">
+          <strong>{{ key }}: </strong> {{ val }}
+        </li>
+      </ul>
+    </div>
+    <div class="attributes">
+      <h2>Stats</h2>
+      <ul>
+        <li><strong>greve:</strong> come va</li>
+        <li><strong>greve:</strong> come va</li>
+        <li><strong>greve:</strong> come va</li>
+        <li><strong>greve:</strong> come va</li>
+      </ul>
+    </div>
   </div>
-  <div class="attributes">
-    <h2>Stats</h2>
-    <ul>
-      <li><strong>greve:</strong> come va</li>
-      <li><strong>greve:</strong> come va</li>
-      <li><strong>greve:</strong> come va</li>
-      <li><strong>greve:</strong> come va</li>
-    </ul>
-  </div>
+  <div v-else class="noResult">nessun Pokemon selezionato</div>
 </template>
 
 <style lang="scss" scoped></style>
