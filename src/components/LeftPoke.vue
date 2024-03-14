@@ -26,7 +26,7 @@ export default {
     InputUser,
   },
 
-  emits: ["saveToggled"],
+  emits: ["savePoke"],
   methods: {
     fetchData() {
       this.uri = this.uri.toLowerCase().trim();
@@ -53,18 +53,21 @@ export default {
       this.fetchData();
     },
 
-    saveToggle() {
+    savePoke() {
       if (this.pokeStats.name != null) {
-        this.$emit("saveToggled", this.pokeStats.name);
+        this.$emit("savePoke", this.pokeStats.name);
       }
     },
+    // deletePoke(){
+    //   this.$emit("deletePoke", this.)
+    // }
   },
 };
 </script>
 
 <template>
   <div class="left">
-    <InputUser @search="search" @saveToggle="saveToggle()" />
+    <InputUser @search="search" @savePoke="savePoke()" />
     <div class="pok img">
       <ImgPoke :sprites="sprite" />
     </div>

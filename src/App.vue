@@ -15,7 +15,7 @@ export default {
   },
 
   methods: {
-    saveToggled(data) {
+    savePoke(data) {
       const caught = this.captured.indexOf(data);
 
       if (this.captured[caught] != data) {
@@ -35,7 +35,7 @@ export default {
 <template>
   <div class="container">
     <div class="booldex">
-      <LeftPoke @saveToggled="saveToggled" />
+      <LeftPoke @savePoke="savePoke" />
 
       <RightPoke :captured="captured" />
     </div>
