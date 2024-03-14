@@ -13,13 +13,19 @@ export default {
     LeftPoke,
     RightPoke,
   },
+
+  methods: {
+    saveToggled($data) {
+      console.log($data);
+    },
+  },
 };
 </script>
 
 <template>
   <div class="container">
     <div class="booldex">
-      <LeftPoke />
+      <LeftPoke @saveToggled="saveToggled" />
 
       <RightPoke />
     </div>

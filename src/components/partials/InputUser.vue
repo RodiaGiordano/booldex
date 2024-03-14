@@ -5,7 +5,7 @@ export default {
       uri: "",
     };
   },
-  emits: ["search"],
+  emits: ["search", "saveToggle"],
 };
 </script>
 
@@ -19,7 +19,7 @@ export default {
       class="icon"
     />
 
-    <button class="catch">Catch it!</button>
+    <button @click="$emit('saveToggle')" class="catch">Catch it!</button>
   </div>
 </template>
 

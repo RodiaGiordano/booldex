@@ -26,6 +26,7 @@ export default {
     InputUser,
   },
 
+  emits: ["saveToggled"],
   methods: {
     fetchData() {
       this.uri = this.uri.toLowerCase().trim();
@@ -33,6 +34,7 @@ export default {
         .get(`${this.base_url}${this.uri}`)
         .then(({ data: { name, types, height, weight, stats, sprites } }) => {
           this.pokeStats = { name, height, weight, types, stats };
+          console.log(this.pokeStats);
 
           this.sprite = [sprites.front_default, sprites.back_default];
         })
@@ -46,9 +48,16 @@ export default {
           }
         });
     },
+
     search(data) {
       this.uri = data;
       this.fetchData();
+    },
+
+    saveToggle() {
+      if (this.pokeStats.name != null) {
+        this.$emit("saveToggled", this.pokeStats.name);
+      }
     },
   },
 };
@@ -56,7 +65,7 @@ export default {
 
 <template>
   <div class="left">
-    <InputUser @search="search" />
+    <InputUser @search="search" @saveToggle="saveToggle()" />
     <div class="pok img">
       <ImgPoke :sprites="sprite" />
     </div>

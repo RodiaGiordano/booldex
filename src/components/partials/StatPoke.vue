@@ -23,7 +23,6 @@ export default {
           const { name, types, height, weight, stats } = newVal;
           this.details = { name, height, weight, types: types[0].type.name };
           this.attributes = [...stats];
-          console.log(...stats);
         } else {
           this.details.name = null;
           this.attributes = null;
