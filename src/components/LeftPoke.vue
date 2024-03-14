@@ -8,8 +8,10 @@ export default {
     return {
       base_url: "https://pokeapi.co/api/v2/pokemon/",
       uri: "",
-      sprite:
+      sprite: [
         "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png",
+      ],
+
       pokeStats: {
         name: "",
         types: "",
@@ -17,6 +19,9 @@ export default {
         weight: "",
         stats: "",
       },
+      defaultSprite: [
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png",
+      ],
     };
   },
 
@@ -37,13 +42,11 @@ export default {
         .get(`${this.base_url}${this.uri}`)
         .then(({ data: { name, types, height, weight, stats, sprites } }) => {
           this.pokeStats = { name, types, height, weight, stats };
-          this.sprite = sprites
-            ? sprites
-            : "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png";
+
+          this.sprite = [sprites.front_default, sprites.back_default];
         })
         .catch(() => {
-          this.sprite =
-            "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png";
+          this.sprite = [this.defaultSprite];
           this.uri = "";
           this.pokeStats = "Nessun pokemon trovato";
         });

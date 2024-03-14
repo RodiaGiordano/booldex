@@ -1,22 +1,37 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
-
 export default {
   data() {
     return {
-      // pokImg: null,
+      spritesInterval: null,
+      sprite: null,
+      spriteFront: true,
     };
   },
 
-  // components: {
-  //   MyComponent,
-  // },
+  created() {
+    this.sprite = this.sprites;
+  },
 
   props: ["sprites"],
 
-  computed: {
-    screenImg() {
-      if (typeof this.sprites === "string") return this.sprites;
+  watch: {
+    sprites(newVal) {
+      console.log(newVal);
+      clearInterval(this.spritesInterval);
+      this.spriteFront = true;
+      if (newVal.length > 1) {
+        this.spritesCarosel();
+      }
+      this.sprite = newVal;
+    },
+  },
+
+  methods: {
+    spritesCarosel() {
+      this.spritesInterval = setInterval(() => {
+        this.spriteFront = this.spriteFront ? false : true;
+        console.log("ciao");
+      }, 1000);
     },
   },
 };
@@ -24,7 +39,7 @@ export default {
 
 <template>
   <div class="wrapper">
-    <img :src="screenImg" alt="" />
+    <img :src="spriteFront ? sprite[0] : sprite[1]" alt="" />
   </div>
 </template>
 
