@@ -1,6 +1,4 @@
 <script>
-// import MyComponent from "./components/MyComponent.vue";
-
 export default {
   data() {
     return {
@@ -24,6 +22,7 @@ export default {
   watch: {
     stats: {
       handler(newVal) {
+        console.log(newVal);
         if (newVal.name) {
           const { name, types, height, weight, stats } = newVal;
           this.details = { name, height, weight };
@@ -46,9 +45,10 @@ export default {
   <div v-if="details.name" class="stats">
     <div class="details">
       <ul>
-        <li v-for="(val, key) in details" :key="key">
-          <strong>{{ key }}: </strong> {{ val }}
-        </li>
+        <li><strong>Name: </strong>{{ this.details.name }}</li>
+        <li><strong>Type: </strong>{{ this.details.types }}</li>
+        <li><strong>Height: </strong>{{ this.details.height }}</li>
+        <li><strong>weight: </strong>{{ this.details.weight }}</li>
       </ul>
     </div>
     <div class="attributes">
