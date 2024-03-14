@@ -46,28 +46,17 @@ export default {
           }
         });
     },
+    search(data) {
+      this.uri = data;
+      this.fetchData();
+    },
   },
 };
 </script>
 
 <template>
   <div class="left">
-    <InputUser />
-    <!-- <div class="search">
-      <input
-        v-model="uri"
-        type="text"
-        placeholder="Cerca il nome del Pokemon"
-      />
-
-      <font-awesome-icon
-        @click="fetchData()"
-        :icon="['fas', 'magnifying-glass']"
-        class="icon"
-      />
-
-      <button class="catch">Catch it!</button>
-    </div> -->
+    <InputUser @search="search" />
     <div class="pok img">
       <ImgPoke :sprites="sprite" />
     </div>

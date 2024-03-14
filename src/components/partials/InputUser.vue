@@ -1,8 +1,11 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      uri: "",
+    };
   },
+  emits: ["search"],
 };
 </script>
 
@@ -11,7 +14,7 @@ export default {
     <input v-model="uri" type="text" placeholder="Cerca il nome del Pokemon" />
 
     <font-awesome-icon
-      @click="fetchData()"
+      @click="$emit('search', this.uri)"
       :icon="['fas', 'magnifying-glass']"
       class="icon"
     />
