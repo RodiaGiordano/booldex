@@ -34,14 +34,12 @@ export default {
           this.sprite = [sprites.front_default, sprites.back_default];
         })
         .catch(() => {
-          console.log("catch");
           this.sprite = [this.defaultSprite];
           this.uri = "";
           if (this.pokeStats) {
             for (let key in this.pokeStats) {
               this.pokeStats[key] = null;
             }
-            // this.pokeStats = null;
           }
         });
     },

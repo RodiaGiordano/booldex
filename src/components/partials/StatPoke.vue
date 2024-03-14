@@ -24,17 +24,17 @@ export default {
   watch: {
     stats: {
       handler(newVal) {
-        if (newVal.name != undefined || newVal.name != null) {
+        if (newVal.name) {
           const { name, types, height, weight, stats } = newVal;
           this.details = { name, height, weight };
           this.details.types = types[0].type.name;
           this.details.height += " ''";
           this.details.weight += " lbs.";
           this.attributes = [...stats];
-          return;
+        } else {
+          this.details.name = null;
+          this.attributes = null;
         }
-        this.details.name = null;
-        this.attributes = null;
       },
       deep: true,
     },
