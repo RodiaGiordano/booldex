@@ -16,7 +16,6 @@ export default {
 
   watch: {
     sprites(newVal) {
-      console.log(newVal);
       clearInterval(this.spritesInterval);
       this.spriteFront = true;
       if (newVal.length > 1) {
@@ -30,7 +29,6 @@ export default {
     spritesCarosel() {
       this.spritesInterval = setInterval(() => {
         this.spriteFront = this.spriteFront ? false : true;
-        console.log("ciao");
       }, 1000);
     },
   },
@@ -48,7 +46,7 @@ export default {
 
 .wrapper {
   border: 5px solid black;
-  border-radius: 5px;
+
   height: 100%;
   text-align: center;
 

@@ -12,13 +12,7 @@ export default {
         "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png",
       ],
 
-      pokeStats: {
-        name: "",
-        types: "",
-        height: "",
-        weight: "",
-        stats: "",
-      },
+      pokeStats: null,
       defaultSprite: [
         "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png",
       ],
@@ -38,6 +32,7 @@ export default {
           this.pokeStats = { name, types, height, weight, stats };
 
           this.sprite = [sprites.front_default, sprites.back_default];
+          console.log(this.pokeStats);
         })
         .catch(() => {
           this.sprite = [this.defaultSprite];
@@ -70,7 +65,7 @@ export default {
       <ImgPoke :sprites="sprite" />
     </div>
     <div class="pok descript">
-      <StatPoke />
+      <StatPoke :stats="pokeStats" />
     </div>
   </div>
 </template>

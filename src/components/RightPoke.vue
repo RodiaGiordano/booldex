@@ -12,7 +12,9 @@ export default {
 
 <template>
   <div class="right">
-    <div class="description debug">ciao</div>
+    <div class="description debug">
+      <h2>I miei pokemon</h2>
+    </div>
   </div>
 </template>
 
