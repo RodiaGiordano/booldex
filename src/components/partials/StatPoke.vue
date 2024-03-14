@@ -12,9 +12,6 @@ export default {
     };
   },
 
-  // components: {
-  //   MyComponent,
-  // },
   props: {
     stats: [Object, null],
   },
@@ -22,14 +19,11 @@ export default {
   watch: {
     stats: {
       handler(newVal) {
-        console.log(newVal);
         if (newVal.name) {
           const { name, types, height, weight, stats } = newVal;
-          this.details = { name, height, weight };
-          this.details.types = types[0].type.name;
-          this.details.height += " ''";
-          this.details.weight += " lbs.";
+          this.details = { name, height, weight, types: types[0].type.name };
           this.attributes = [...stats];
+          console.log(...stats);
         } else {
           this.details.name = null;
           this.attributes = null;
@@ -42,26 +36,60 @@ export default {
 </script>
 
 <template>
-  <div v-if="details.name" class="stats">
+  <div v-if="details.name" class="info">
     <div class="details">
       <ul>
         <li><strong>Name: </strong>{{ this.details.name }}</li>
         <li><strong>Type: </strong>{{ this.details.types }}</li>
-        <li><strong>Height: </strong>{{ this.details.height }}</li>
-        <li><strong>weight: </strong>{{ this.details.weight }}</li>
+        <li><strong>Height: </strong>{{ this.details.height }}''</li>
+        <li><strong>weight: </strong>{{ this.details.weight }} lbs.</li>
       </ul>
     </div>
     <div class="attributes">
-      <h2>Stats</h2>
+      <h3>Stats</h3>
       <ul>
-        <li><strong>greve:</strong> come va</li>
-        <li><strong>greve:</strong> come va</li>
-        <li><strong>greve:</strong> come va</li>
-        <li><strong>greve:</strong> come va</li>
+        <li class="stat" v-for="attribute in attributes">
+          <strong>{{ attribute.stat.name }}</strong>
+          <div class="bar">
+            <div
+              class="charge-bar"
+              :style="{ width: attribute.base_stat + 'px' }"
+            ></div>
+          </div>
+        </li>
       </ul>
     </div>
   </div>
-  <div v-else class="noResult">nessun Pokemon selezionato</div>
+  <div v-else class="noResult">Nessun Pokemon selezionato</div>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.noResult,
+.info {
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  line-height: 1.6;
+
+  .stat {
+    .bar {
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 5px;
+      width: 50%;
+      height: 10px;
+
+      .charge-bar {
+        height: 100%;
+        background-color: black;
+      }
+    }
+  }
+}
+</style>

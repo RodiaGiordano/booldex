@@ -26,6 +26,7 @@ export default {
 
   methods: {
     fetchData() {
+      this.uri = this.uri.toLowerCase().trim();
       axios
         .get(`${this.base_url}${this.uri}`)
         .then(({ data: { name, types, height, weight, stats, sprites } }) => {
@@ -107,6 +108,10 @@ export default {
 
   .search > .catch {
     margin-left: auto;
+    font-weight: bold;
+  }
+
+  input {
     font-weight: bold;
   }
 
