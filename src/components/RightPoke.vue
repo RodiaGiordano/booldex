@@ -20,7 +20,7 @@ export default {
 @use "../assets/variables.scss" as *;
 @use "../assets/mixin.scss";
 .right {
-  @include mixin.border(true, $bd-primary);
+  @include mixin.border(false, $bd-primary);
   height: 100%;
   padding: 60px;
 

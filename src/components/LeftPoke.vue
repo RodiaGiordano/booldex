@@ -30,12 +30,6 @@ export default {
     StatPoke,
   },
 
-  // computed: {
-  //   params() {
-  //     this.uri;
-  //   },
-  // },
-
   methods: {
     fetchData() {
       axios
