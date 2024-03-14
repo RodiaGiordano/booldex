@@ -1,6 +1,7 @@
 <script>
 import ImgPoke from "./partials/ImgPoke.vue";
 import StatPoke from "./partials/StatPoke.vue";
+import InputUser from "./partials/InputUser.vue";
 import axios from "axios";
 
 export default {
@@ -22,6 +23,7 @@ export default {
   components: {
     ImgPoke,
     StatPoke,
+    InputUser,
   },
 
   methods: {
@@ -50,7 +52,8 @@ export default {
 
 <template>
   <div class="left">
-    <div class="search">
+    <InputUser />
+    <!-- <div class="search">
       <input
         v-model="uri"
         type="text"
@@ -64,7 +67,7 @@ export default {
       />
 
       <button class="catch">Catch it!</button>
-    </div>
+    </div> -->
     <div class="pok img">
       <ImgPoke :sprites="sprite" />
     </div>
@@ -82,52 +85,22 @@ export default {
   padding: 20px 50px;
   height: 100%;
 
-  .search,
   .pok {
     margin: 0 auto 10px auto;
-  }
 
-  .search {
-    height: 30px;
+    &.img {
+      height: 30%;
+      width: 80%;
+      border: 25px solid #a7a6a8;
 
-    display: flex;
-    align-items: center;
-  }
-
-  .search > .icon,
-  .catch {
-    border: 1px solid black;
-    background-color: $bg-secondary;
-    &:hover {
-      cursor: pointer;
+      background-color: $bg-secondary;
     }
-  }
-  .search * {
-    padding: 5px;
-  }
-
-  .search > .catch {
-    margin-left: auto;
-    font-weight: bold;
-  }
-
-  input {
-    font-weight: bold;
-  }
-
-  .pok.img {
-    height: 30%;
-    width: 80%;
-    border: 25px solid #a7a6a8;
-
-    background-color: $bg-secondary;
-  }
-
-  .pok.descript {
-    height: 60%;
-    background-color: #2cd40d;
-    border: 3px solid black;
-    border-radius: 10px;
+    &.descript {
+      height: 60%;
+      background-color: #2cd40d;
+      border: 3px solid black;
+      border-radius: 10px;
+    }
   }
 }
 </style>

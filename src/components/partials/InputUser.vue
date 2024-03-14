@@ -1,0 +1,52 @@
+<script>
+export default {
+  data() {
+    return {};
+  },
+};
+</script>
+
+<template>
+  <div class="search">
+    <input v-model="uri" type="text" placeholder="Cerca il nome del Pokemon" />
+
+    <font-awesome-icon
+      @click="fetchData()"
+      :icon="['fas', 'magnifying-glass']"
+      class="icon"
+    />
+
+    <button class="catch">Catch it!</button>
+  </div>
+</template>
+
+<style lang="scss" scoped>
+@use "../../assets/variables.scss" as *;
+.search {
+  margin: 0 auto 10px auto;
+  height: 30px;
+  display: flex;
+  align-items: center;
+
+  > * {
+    padding: 5px;
+  }
+
+  .icon,
+  .catch {
+    border: 1px solid black;
+    background-color: $bg-secondary;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+  .catch {
+    margin-left: auto;
+    font-weight: bold;
+  }
+
+  input {
+    font-weight: bold;
+  }
+}
+</style>
