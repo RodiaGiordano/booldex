@@ -46,7 +46,6 @@ export default {
     border: 5px solid $bd-primary;
     background-color: $bg-secondary;
     padding: 40px 0 0 20px;
-    // overflow: hidden;
 
     .list {
       max-height: 85%;
@@ -60,7 +59,6 @@ export default {
     li {
       line-height: 2rem;
       font-size: 1.5rem;
-      font-weight: 500;
 
       &::first-letter {
         text-transform: uppercase;
