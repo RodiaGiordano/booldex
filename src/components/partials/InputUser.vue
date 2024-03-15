@@ -21,7 +21,12 @@ export default {
 
 <template>
   <div class="search">
-    <input v-model="uri" type="text" placeholder="Cerca il nome del Pokemon" />
+    <input
+      @keyup.enter="$emit('search', this.uri)"
+      v-model="uri"
+      type="text"
+      placeholder="Cerca il nome del Pokemon"
+    />
 
     <font-awesome-icon
       @click="$emit('search', this.uri)"
