@@ -22,8 +22,8 @@ export default {
 
 <template>
   <div class="right">
-    <div class="description debug">
-      <h2>I miei pokemon</h2>
+    <div class="description">
+      <h2>My pokemons</h2>
       <ul>
         <li v-for="ele in capturedList">{{ ele }}</li>
       </ul>
@@ -43,7 +43,21 @@ export default {
     height: 100%;
     border: 5px solid $bd-primary;
     background-color: $bg-secondary;
-    padding: 10px;
+    padding: 40px 20px 0px;
+
+    h2 {
+      font-size: 1.8rem;
+      margin-bottom: 30px;
+    }
+    li {
+      line-height: 2rem;
+      font-size: 1.5rem;
+      font-weight: 500;
+
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
   }
 }
 </style>
