@@ -2,7 +2,8 @@
 export default {
   data() {
     return {
-      capturedList: [],
+      capturedList: null,
+      capturedTrue: false,
     };
   },
 
@@ -12,7 +13,7 @@ export default {
     captured: {
       handler(newVal) {
         this.capturedList = newVal;
-        console.log("array in right");
+        // console.log("array in right");
       },
       deep: true,
     },
@@ -24,6 +25,9 @@ export default {
   <div class="right">
     <div class="description debug">
       <h2>I miei pokemon</h2>
+      <ul>
+        <li v-for="ele in capturedList">{{ ele }}</li>
+      </ul>
     </div>
   </div>
 </template>

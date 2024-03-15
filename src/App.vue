@@ -15,7 +15,7 @@ export default {
   },
 
   methods: {
-    savePoke(data) {
+    saveToggle(data) {
       const caught = this.captured.indexOf(data);
 
       if (this.captured[caught] != data) {
@@ -23,6 +23,8 @@ export default {
         console.log(this.captured);
         console.log("sono diversi");
       } else {
+        this.captured.splice(caught, 1);
+        console.log(this.captured);
         console.log("sono uguali");
       }
 
@@ -35,7 +37,7 @@ export default {
 <template>
   <div class="container">
     <div class="booldex">
-      <LeftPoke @savePoke="savePoke" />
+      <LeftPoke @saveToggle="saveToggle" />
 
       <RightPoke :captured="captured" />
     </div>

@@ -3,9 +3,10 @@ export default {
   data() {
     return {
       uri: "",
+      capturedList: [],
     };
   },
-  emits: ["search", "savePoke"],
+  emits: ["search", "saveToggle"],
 };
 </script>
 
@@ -19,7 +20,7 @@ export default {
       class="icon"
     />
 
-    <button @click="$emit('savePoke')" class="catch">Catch it!</button>
+    <button @click="$emit('saveToggle')" class="catch">Catch it!</button>
   </div>
 </template>
 
