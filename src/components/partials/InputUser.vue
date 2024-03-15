@@ -3,10 +3,20 @@ export default {
   data() {
     return {
       uri: "",
-      capturedList: [],
     };
   },
+  props: { captured: [Array, "captured"], pokeShow: [String, "pokeShow"] },
   emits: ["search", "saveToggle"],
+
+  computed: {
+    comparison() {
+      console.log(this.captured);
+      if (this.captured) {
+        return this.captured.includes(this.pokeShow);
+      }
+      return false;
+    },
+  },
 };
 </script>
 
@@ -19,8 +29,9 @@ export default {
       :icon="['fas', 'magnifying-glass']"
       class="icon"
     />
-
-    <button @click="$emit('saveToggle')" class="catch">Catch it!</button>
+    <button v-if="pokeShow" @click="$emit('saveToggle')" class="catch">
+      {{ comparison ? "Remove" : "Catch it!" }}
+    </button>
   </div>
 </template>
 

@@ -17,6 +17,8 @@ export default {
       defaultSprite: [
         "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/640px-Pok%C3%A9_Ball_icon.svg.png",
       ],
+      capturedList: [],
+      pokeShow: null,
     };
   },
 
@@ -25,8 +27,18 @@ export default {
     StatPoke,
     InputUser,
   },
-
+  props: { captured: [Array, "captured"] },
   emits: ["saveToggle"],
+
+  watch: {
+    captured: {
+      handler(newVal) {
+        this.capturedList = newVal;
+      },
+      deep: true,
+    },
+  },
+
   methods: {
     fetchData() {
       this.uri = this.uri.toLowerCase().trim();
@@ -36,10 +48,13 @@ export default {
           this.pokeStats = { name, height, weight, types, stats };
 
           this.sprite = [sprites.front_default, sprites.back_default];
+
+          this.pokeShow = name;
         })
         .catch(() => {
           this.sprite = [this.defaultSprite];
           this.uri = "";
+          this.pokeShow = null;
           if (this.pokeStats) {
             for (let key in this.pokeStats) {
               this.pokeStats[key] = null;
@@ -58,16 +73,18 @@ export default {
         this.$emit("saveToggle", this.pokeStats.name);
       }
     },
-    // deletePoke(){
-    //   this.$emit("deletePoke", this.)
-    // }
   },
 };
 </script>
 
 <template>
   <div class="left">
-    <InputUser @search="search" @saveToggle="saveToggle()" />
+    <InputUser
+      @search="search"
+      @saveToggle="saveToggle()"
+      :captured="capturedList"
+      :pokeShow="pokeShow"
+    />
     <div class="pok img">
       <ImgPoke :sprites="sprite" />
     </div>

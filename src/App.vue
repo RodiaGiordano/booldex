@@ -27,8 +27,6 @@ export default {
         console.log(this.captured);
         console.log("sono uguali");
       }
-
-      // this.captured.push(data.charAt(0).toUpperCase() + data.slice(1));
     },
   },
 };
@@ -37,7 +35,7 @@ export default {
 <template>
   <div class="container">
     <div class="booldex">
-      <LeftPoke @saveToggle="saveToggle" />
+      <LeftPoke @saveToggle="saveToggle" :captured="captured" />
 
       <RightPoke :captured="captured" />
     </div>

@@ -13,7 +13,6 @@ export default {
     captured: {
       handler(newVal) {
         this.capturedList = newVal;
-        // console.log("array in right");
       },
       deep: true,
     },
