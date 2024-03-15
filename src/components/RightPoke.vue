@@ -24,9 +24,11 @@ export default {
   <div class="right">
     <div class="description">
       <h2>My pokemons</h2>
-      <ul>
-        <li v-for="ele in capturedList">{{ ele }}</li>
-      </ul>
+      <div class="list">
+        <ul>
+          <li v-for="ele in capturedList">{{ ele }}</li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
@@ -43,11 +45,17 @@ export default {
     height: 100%;
     border: 5px solid $bd-primary;
     background-color: $bg-secondary;
-    padding: 40px 20px 0px;
+    padding: 40px 0 0 20px;
+    // overflow: hidden;
+
+    .list {
+      max-height: 85%;
+      overflow-y: scroll;
+    }
 
     h2 {
       font-size: 1.8rem;
-      margin-bottom: 30px;
+      height: 15%;
     }
     li {
       line-height: 2rem;
