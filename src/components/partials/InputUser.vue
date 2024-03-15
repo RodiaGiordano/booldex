@@ -10,7 +10,6 @@ export default {
 
   computed: {
     comparison() {
-      console.log(this.captured);
       if (this.captured) {
         return this.captured.includes(this.pokeShow);
       }

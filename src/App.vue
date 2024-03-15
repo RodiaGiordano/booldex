@@ -20,12 +20,8 @@ export default {
 
       if (this.captured[caught] != data) {
         this.captured.push(data);
-        console.log(this.captured);
-        console.log("sono diversi");
       } else {
         this.captured.splice(caught, 1);
-        console.log(this.captured);
-        console.log("sono uguali");
       }
     },
   },
