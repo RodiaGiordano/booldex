@@ -46,10 +46,12 @@ export default {
     border: 5px solid $bd-primary;
     background-color: $bg-secondary;
     padding: 40px 0 0 20px;
+    // overflow: hidden;
 
     .list {
       max-height: 85%;
-      overflow-y: scroll;
+      // overflow-y: scroll;
+      overflow-y: auto;
     }
 
     h2 {
@@ -57,7 +59,7 @@ export default {
       height: 15%;
     }
     li {
-      line-height: 2rem;
+      line-height: 1.98rem;
       font-size: 1.5rem;
 
       &::first-letter {
