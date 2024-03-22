@@ -75,9 +75,6 @@ export default {
         this.$emit("saveToggle", this.pokeStats);
       }
     },
-    cancel() {
-      localStorage.clear();
-    },
   },
 };
 </script>
@@ -96,7 +93,6 @@ export default {
     <div class="pok descript">
       <StatPoke :stats="pokeStats" />
     </div>
-    <button @click="cancel()">cancella</button>
   </div>
 </template>
 
