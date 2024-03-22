@@ -25,6 +25,17 @@ export default {
         this.captured.push(data.name);
       }
     },
+
+    getLocalStorage() {
+      for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const { name } = JSON.parse(localStorage.getItem(key));
+        this.captured.push(name);
+      }
+    },
+  },
+  mounted() {
+    this.getLocalStorage();
   },
 };
 </script>

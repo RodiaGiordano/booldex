@@ -2,8 +2,7 @@
 export default {
   data() {
     return {
-      capturedList: null,
-      capturedTrue: false,
+      capturedList: [],
     };
   },
 

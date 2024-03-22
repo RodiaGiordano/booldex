@@ -36,9 +36,6 @@ export default {
     <button v-if="pokeShow" @click="$emit('saveToggle')" class="catch">
       {{ comparison ? "Remove" : "Catch it!" }}
     </button>
-    <!-- <button v-if="pokeShow" @click="saveToggle()" class="catch">
-      {{ comparison ? "Remove" : "Catch it!" }}
-    </button> -->
   </div>
 </template>
 
