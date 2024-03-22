@@ -16,26 +16,23 @@ export default {
 
   methods: {
     saveToggle(data) {
-      if (localStorage.getItem(`pok_${data.name}`)) {
-        localStorage.removeItem(`pok_${data.name}`);
-        const removeItem = this.captured.indexOf(data.name);
-        this.captured.splice(removeItem, 1);
+      const pokedex = JSON.parse(localStorage.getItem("pokedex")) || [];
+      const captured = pokedex.findIndex((item) => item.name === data.name);
+      if (captured != -1) {
+        this.captured.splice(captured, 1);
+        pokedex.splice(captured, 1);
+        localStorage.setItem(`pokedex`, JSON.stringify(pokedex));
       } else {
-        localStorage.setItem(`pok_${data.name}`, JSON.stringify(data));
+        pokedex.push(data);
         this.captured.push(data.name);
-      }
-    },
-
-    getLocalStorage() {
-      for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        const { name } = JSON.parse(localStorage.getItem(key));
-        this.captured.push(name);
+        localStorage.setItem(`pokedex`, JSON.stringify(pokedex));
       }
     },
   },
+
   mounted() {
-    this.getLocalStorage();
+    const pokedex = JSON.parse(localStorage.getItem("pokedex"));
+    pokedex.forEach((pokemon) => this.captured.push(pokemon.name));
   },
 };
 </script>
