@@ -31,7 +31,7 @@ export default {
   },
 
   mounted() {
-    const pokedex = JSON.parse(localStorage.getItem("pokedex"));
+    const pokedex = JSON.parse(localStorage.getItem("pokedex")) || [];
     pokedex.forEach((pokemon) => this.captured.push(pokemon.name));
   },
 };

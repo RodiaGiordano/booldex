@@ -27,6 +27,7 @@ export default {
     StatPoke,
     InputUser,
   },
+
   props: { captured: [Array, "captured"] },
   emits: ["saveToggle"],
 
@@ -36,6 +37,11 @@ export default {
         this.capturedList = newVal;
       },
       deep: true,
+    },
+    uri: {
+      handler(newVal) {
+        this.fetchData();
+      },
     },
   },
 
@@ -63,13 +69,6 @@ export default {
         });
     },
 
-    search(data) {
-      if (this.uri != data) {
-        this.uri = data;
-        this.fetchData();
-      }
-    },
-
     saveToggle() {
       if (this.pokeStats.name != null) {
         this.$emit("saveToggle", this.pokeStats);
@@ -82,10 +81,10 @@ export default {
 <template>
   <div class="left">
     <InputUser
-      @search="search"
       @saveToggle="saveToggle()"
       :captured="capturedList"
       :pokeShow="pokeShow"
+      v-model="uri"
     />
     <div class="pok img">
       <ImgPoke :sprites="sprite" />
