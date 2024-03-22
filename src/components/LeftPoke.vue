@@ -39,7 +39,7 @@ export default {
       deep: true,
     },
     uri: {
-      handler(newVal) {
+      handler() {
         this.fetchData();
       },
     },
@@ -84,7 +84,7 @@ export default {
       @saveToggle="saveToggle()"
       :captured="capturedList"
       :pokeShow="pokeShow"
-      v-model="uri"
+      v-model:pokeSearch="uri"
     />
     <div class="pok img">
       <ImgPoke :sprites="sprite" />

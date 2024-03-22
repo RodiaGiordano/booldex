@@ -8,9 +8,9 @@ export default {
   props: {
     captured: [Array, "captured"],
     pokeShow: [String, "pokeShow"],
-    modelValue: [String, "modelValue"],
+    pokeSearch: [String, "pokeSearch"],
   },
-  emits: ["update:modelValue", "saveToggle"],
+  emits: ["update:pokeSearch", "saveToggle"],
 
   computed: {
     comparison() {
@@ -26,14 +26,14 @@ export default {
 <template>
   <div class="search">
     <input
-      @keyup.enter="$emit('update:modelValue', $event.target.value)"
+      @keyup.enter="$emit('update:pokeSearch', uri)"
       v-model="uri"
       type="text"
       placeholder="Cerca il nome del Pokemon"
     />
 
     <font-awesome-icon
-      @click="$emit('update:modelValue', uri)"
+      @click="$emit('update:pokeSearch', uri)"
       :icon="['fas', 'magnifying-glass']"
       class="icon"
     />
