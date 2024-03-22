@@ -64,8 +64,10 @@ export default {
     },
 
     search(data) {
-      this.uri = data;
-      this.fetchData();
+      if (this.uri != data) {
+        this.uri = data;
+        this.fetchData();
+      }
     },
 
     saveToggle() {
