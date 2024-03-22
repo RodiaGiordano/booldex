@@ -70,24 +70,7 @@ export default {
 
     saveToggle() {
       if (this.pokeStats.name != null) {
-        this.$emit("saveToggle", this.pokeStats.name);
-
-        if (localStorage.getItem(`pok_${this.pokeStats.name}`)) {
-          localStorage.removeItem(`pok_${this.pokeStats.name}`);
-        } else {
-          localStorage.setItem(
-            `pok_${this.pokeStats.name}`,
-            JSON.stringify(this.pokeStats)
-          );
-        }
-
-        const pokeArray = [];
-
-        for (let i = 0; i < localStorage.length; i++) {
-          const key = localStorage.key(i);
-          pokeArray.push(JSON.parse(localStorage.getItem(key)));
-        }
-        console.log(pokeArray);
+        this.$emit("saveToggle", this.pokeStats);
       }
     },
     cancel() {

@@ -16,12 +16,13 @@ export default {
 
   methods: {
     saveToggle(data) {
-      const caught = this.captured.indexOf(data);
-
-      if (this.captured[caught] != data) {
-        this.captured.push(data);
+      if (localStorage.getItem(`pok_${data.name}`)) {
+        localStorage.removeItem(`pok_${data.name}`);
+        const removeItem = this.captured.indexOf(data.name);
+        this.captured.splice(removeItem, 1);
       } else {
-        this.captured.splice(caught, 1);
+        localStorage.setItem(`pok_${data.name}`, JSON.stringify(data));
+        this.captured.push(data.name);
       }
     },
   },
