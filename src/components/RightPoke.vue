@@ -46,11 +46,10 @@ export default {
     border: 5px solid $bd-primary;
     background-color: $bg-secondary;
     padding: 40px 0 0 20px;
-    // overflow: hidden;
 
     .list {
       max-height: 85%;
-      // overflow-y: scroll;
+
       overflow-y: auto;
     }
 
